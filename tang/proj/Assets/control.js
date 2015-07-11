@@ -81,12 +81,13 @@ function Start(){
 				temp.y -=100;
 				go.transform.position = temp;
 				
+				yield WaitForSeconds (2.0f);
 			}
-	
+			//StartCoroutine();
 		}
 
 		function Update () {
-	
+			return;
 			if(Input.GetKeyDown(KeyCode.Space)) {
 				if(_active){
 					_active = false;
