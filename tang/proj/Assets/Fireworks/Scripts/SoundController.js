@@ -120,8 +120,8 @@ function PlayMusic (clip:AudioClip, volume:float, pitch:float, fade:boolean) {
 	}else{
 		_musicChannels[_musicChannel].volume = volume*_masterVol*_musicVol;
 	}
-	_musicChannels[_musicChannel].audio.pitch = pitch;
-	_musicChannels[_musicChannel].audio.Play();
+	_musicChannels[_musicChannel].GetComponent.<AudioSource>().pitch = pitch;
+	_musicChannels[_musicChannel].GetComponent.<AudioSource>().Play();
 }
 
 //Play from channels list
@@ -130,9 +130,9 @@ function Play (audioClipIndex:int, volume:float, pitch:float) {
 	else channel = 0;
 	if(audioClipIndex<_audioClips.Length){	
 		channels[channel].clip = _audioClips[audioClipIndex];
-		channels[channel].audio.volume = volume*_masterVol*_soundVol;
-		channels[channel].audio.pitch = pitch;
-		channels[channel].audio.Play();
+		channels[channel].GetComponent.<AudioSource>().volume = volume*_masterVol*_soundVol;
+		channels[channel].GetComponent.<AudioSource>().pitch = pitch;
+		channels[channel].GetComponent.<AudioSource>().Play();
 	}
 }
 
@@ -141,10 +141,10 @@ function Play (clip:AudioClip, volume:float, pitch:float, position:Vector3) {
 	if(channel < channels.Length-1)	channel++;
 	else channel = 0;	
 	channels[channel].clip = clip;
-	channels[channel].audio.volume = volume*_masterVol*_soundVol;
-	channels[channel].audio.pitch = pitch;
+	channels[channel].GetComponent.<AudioSource>().volume = volume*_masterVol*_soundVol;
+	channels[channel].GetComponent.<AudioSource>().pitch = pitch;
 	channels[channel].transform.position = position;
-	channels[channel].audio.Play();
+	channels[channel].GetComponent.<AudioSource>().Play();
 }
 
 

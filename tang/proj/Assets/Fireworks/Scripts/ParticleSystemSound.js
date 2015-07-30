@@ -21,8 +21,8 @@ var _crackleVolumeMax:float = 0.75;
 var _crackleVolumeMin:float = 0.25;
 
 function LateUpdate() {
-	var particles:ParticleSystem.Particle[]  = new ParticleSystem.Particle[particleSystem.particleCount];
-	var length:int = particleSystem.GetParticles(particles);
+	var particles:ParticleSystem.Particle[]  = new ParticleSystem.Particle[GetComponent.<ParticleSystem>().particleCount];
+	var length:int = GetComponent.<ParticleSystem>().GetParticles(particles);
 	var i:int = 0;
 	while (i < length){
  		if(_explosionSound.Length > 0 && particles[i].lifetime < Time.deltaTime){

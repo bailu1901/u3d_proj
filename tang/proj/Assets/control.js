@@ -43,7 +43,10 @@ var bigStyle: GUIStyle;
 
 function Start(){
 
-	
+#if UNITY_IPHONE
+	iPhoneSettings.screenCanDarken = false;
+#endif
+
 	//Sort particle system list alphabeticly
 	particles.Sort(particles, function(g1,g2) String.Compare(g1.name, g2.name));
 		materials.Sort(materials, function(g1,g2) String.Compare(g1.name, g2.name));
@@ -60,7 +63,7 @@ function Start(){
 	
 			}
 
-			var dis = 180;
+			var dis = 140;
 
 			var pos = maincamera.transform.position;
 			var num = 10;
@@ -72,7 +75,7 @@ function Start(){
 				currentGO = go;
 				counter = i + (page * maxButtons);
 				if(material)
-					go.renderer.sharedMaterial = material;
+					go.GetComponent.<Renderer>().sharedMaterial = material;
 				Info(go,  i + (page * maxButtons) +1);
 				//go.transform.position = pos;
 				var temp = pos;
@@ -115,7 +118,7 @@ function Start(){
 				if(matCounter > materials.Length -1) matCounter = 0;
 				material = materials[matCounter];
 				if(currentGO){
-					currentGO.renderer.sharedMaterial = material;
+					currentGO.GetComponent.<Renderer>().sharedMaterial = material;
 				}
 			}
 			if(Input.GetKeyDown(KeyCode.DownArrow) && materials.Length>0) {
@@ -123,7 +126,7 @@ function Start(){
 				if(matCounter < 0) matCounter = materials.Length-1;
 				material = materials[matCounter];
 				if(currentGO){
-					currentGO.renderer.sharedMaterial = material;
+					currentGO.GetComponent.<Renderer>().sharedMaterial = material;
 				}
 		
 			}
@@ -187,7 +190,7 @@ function Start(){
 						currentGO = go;
 						counter = i + (page * maxButtons);
 						if(material)
-							go.renderer.sharedMaterial = material;
+							go.GetComponent.<Renderer>().sharedMaterial = material;
 						Info(go,  i + (page * maxButtons) +1);
 					}
 				}
@@ -199,7 +202,7 @@ function Start(){
 					if(GUI.Button(Rect(20,(maxButtons+m+4)*18,150,18),b)){
 						material = materials[m];
 						if(currentGO){
-							currentGO.renderer.sharedMaterial = material;
+							currentGO.GetComponent.<Renderer>().sharedMaterial = material;
 						}
 					}
 				}
@@ -224,7 +227,7 @@ function Start(){
 				var go:GameObject = Instantiate(_go);
 				currentGO = go;
 				if(material)
-					go.renderer.sharedMaterial = material;
+					go.GetComponent.<Renderer>().sharedMaterial = material;
 			}
 
 				//Play particle system (resets time scale)
