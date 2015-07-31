@@ -40,6 +40,7 @@ public var maincamera:GameObject;
 
 var bigStyle: GUIStyle;
 
+public var dis = 140;
 
 function Start(){
 
@@ -63,7 +64,7 @@ function Start(){
 	
 			}
 
-			var dis = 140;
+			
 
 			var pos = maincamera.transform.position;
 			var num = 10;
